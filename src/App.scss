@@ -1,0 +1,229 @@
+$primary-color: #1f2125;
+$secondary-color: #343a40;
+$dim-color: #464b50;
+$special-color: #2ca4ab;
+
+:root {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: $primary-color;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.container {
+  max-width: 80%;
+  margin: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+.nav {
+  background-color: $secondary-color;
+  color: white;
+
+  nav {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+
+    a {
+      font-size: 2rem;
+      text-decoration: none;
+      color: white;
+    }
+
+    ul {
+      li {
+        button {
+          background-color: transparent;
+          border: none;
+          color: white;
+          font-size: 1.3rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+header {
+  padding-top: 100px;
+
+  .main_image {
+    text-align: center;
+
+    img {
+      width: 400px;
+      filter: invert(100%);
+      -webkit-filter: invert(100%);
+    }
+  }
+}
+
+.main_view {
+  padding-top: 100px;
+
+  .selection {
+    border-bottom: 1px solid $dim-color;
+
+    ul {
+      display: flex;
+
+      li {
+        button {
+          background-color: transparent;
+          border: none;
+          color: white;
+          font-size: 1rem;
+          cursor: pointer;
+          opacity: .7;
+
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+.surahs {
+  padding-top: 50px;
+  color: white;
+
+  .card_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
+    gap: 15px;
+  }
+
+  .card {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $dim-color;
+    border-radius: 6px;
+    padding: 15px 15px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+
+
+    .left {
+      display: flex;
+      align-items: center;
+
+      .outer {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 5px;
+        background-color: $secondary-color;
+        text-align: center;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        position: relative;
+        display: inline-block;
+
+        .number {
+          display: inline-block;
+          transform: rotate(-45deg);
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+        }
+      }
+
+      .name {
+        margin-left: 20px;
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .verses {
+        margin-top: 5px;
+        font-size: .75rem;
+        color: $dim-color;
+      }
+    }
+
+    &:hover {
+      border: 1px solid $special-color;
+      .outer {
+        background-color: $special-color;
+        .number {
+          color: $primary-color;
+        }
+      }
+      .verses {
+        color: $special-color;
+      }
+    }
+  }
+}
+
+
+.surahDetails {
+  color: white;
+  padding: 100px 30px;
+  text-align: center;
+
+  h2 {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+  }
+
+  h4 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: $special-color;
+  }
+
+  .verses {
+    span {
+      font-size: 1.6rem;
+      line-height: 2;
+
+      &.separator {
+        margin: 0 10px;
+        color: $special-color;
+      }
+    }
+  }
+}
