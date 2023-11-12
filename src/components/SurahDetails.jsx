@@ -28,10 +28,10 @@ export default function SurahDetails() {
                         <div className="verses">
                             {
                                 surah.verses.map((verse) =>
-                                    <>
-                                        <span key={verse.number.inQuran}>{verse.text.arab}</span>
+                                    <div key={verse.number.inQuran}> 
+                                        <span>{verse.text.arab}</span>
                                         <span className='separator'>({verse.number.inSurah})</span>
-                                    </>
+                                    </div>
                                 )
                             }
                         </div>

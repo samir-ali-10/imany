@@ -2,14 +2,14 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 import SurahsData from './components/SurahsData';
+import RecitersData from './components/RecitersData';
 
 export default function MainView() {
 
-    const recitersAPI = "https://ahmedosama0js.github.io/My-Project/quran%20karem/data/mashaykh.json",
+    const recitersAPI = "https://mp3quran.net/api/v3/reciters?language=ar",
         surahsAPI = "https://api.quran.gading.dev/surah";
 
-    const [activeSurahs, setActiveSurahs] = useState(true),
-        [activeReciters, setActiveReciters] = useState(false);
+    const [isactive, setIsActive] = useState("surahs");
 
     const [reciters, setReciters] = useState([]),
         [surahs, setSurahs] = useState([]);
@@ -23,13 +23,11 @@ export default function MainView() {
     }
 
     let handleActiveSurahs = () => {
-        setActiveSurahs(true);
-        setActiveReciters(false)
+        setIsActive("surahs")
     }
 
     let handleActiveReciters = () => {
-        setActiveSurahs(false);
-        setActiveReciters(true)
+        setIsActive("reciters");
     }
 
 
@@ -43,17 +41,23 @@ export default function MainView() {
             <div className="container">
                 <div className="selection">
                     <ul>
-                        <li><button className={activeSurahs ? "active" : ""} onClick={() => {
+                        <li><button className={isactive === "surahs" ? "active" : ""} onClick={() => {
                             loadSurahs()
                             handleActiveSurahs()
                         }} active>Surahs</button></li>
-                        <li><button className={activeReciters ? "active" : ""} onClick={() => {
+                        <li><button className={isactive === "reciters" ? "active" : ""} onClick={() => {
                             loadReciters()
                             handleActiveReciters()
                         }}>Reciters</button></li>
                     </ul>
                 </div>
-                <SurahsData surahs={surahs} />
+                {
+                    isactive === "surahs"
+                    ?
+                    <SurahsData surahs={surahs}/>
+                    :
+                    <RecitersData reciters={reciters}/>
+                }
             </div>
         </div>
     )

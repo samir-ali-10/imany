@@ -4,15 +4,19 @@ import MainView from './MainView';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import SurahDetails from './components/SurahDetails';
+import RecitersDetails from './components/RecitersDetails';
+import ReciterSurahDetails from './components/ReciterSurahDetails';
 
 function App() {
   return (
     <div className="app">
       <Nav />
-      <Header/>
+      <Header />
       <Routes>
-        <Route path='/' element={<MainView/>} />
-        <Route path='/:surahId' element={<SurahDetails/>} />
+        <Route path='/' element={<MainView />} />
+        <Route path='/:surahId' element={<SurahDetails />} />
+        <Route path='/reciterDetails/:reciterId' element={<RecitersDetails />} />
+        <Route path='/reciterDetails/surah/:surahDetailId' element={<ReciterSurahDetails />} />
       </Routes>
     </div>
   );

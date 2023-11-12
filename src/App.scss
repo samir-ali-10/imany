@@ -27,6 +27,10 @@ ul {
   margin: auto;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1,
 h2,
 h3,
@@ -185,12 +189,15 @@ header {
 
     &:hover {
       border: 1px solid $special-color;
+
       .outer {
         background-color: $special-color;
+
         .number {
           color: $primary-color;
         }
       }
+
       .verses {
         color: $special-color;
       }
@@ -228,13 +235,85 @@ header {
   }
 }
 
+
+.reciters {
+  color: white;
+  padding-top: 50px;
+
+  .card_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
+    gap: 15px;
+
+    .card {
+      padding: 20px;
+      text-align: center;
+      border: 1px solid $dim-color;
+      cursor: pointer;
+      color: white;
+      border-radius: 6px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+      -o-border-radius: 6px;
+
+      p {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+.reciterDetails {
+  text-align: center;
+  padding: 100px 30px;
+
+  h2 {
+    font-size: 3rem;
+    color: white;
+  }
+
+  .surahs {
+    .card_container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
+    }
+  }
+}
+
+.reciterSurahDetails {
+  padding: 100px 30px 0 30px;
+  color: white;
+  text-align: center;
+
+  .back_btn {
+
+    margin-bottom: 50px;
+    a {
+      font-size: 2rem;
+      cursor: pointer;
+      color: white;
+
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  audio {
+    width: 50%;
+    outline: none;
+
+  }
+}
+
 // ///////////////////////////////////////Media Queries/ //////////////////////////////////////////////
 
 @media (max-width: 450px) {
   header {
-  
+
     .main_image {
-  
+
       img {
         width: 200px;
       }
