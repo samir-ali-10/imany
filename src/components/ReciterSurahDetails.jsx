@@ -29,8 +29,6 @@ export default function ReciterSurahDetails({ paramsReciter }) {
         loadReciterDetails();
     }, [])
 
-    console.log(surah);
-
     return (
         <div className='reciterSurahDetails'>
             <div className="back_btn">

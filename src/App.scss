@@ -316,6 +316,13 @@ header {
 
 // ///////////////////////////////////////Media Queries/ //////////////////////////////////////////////
 
+@media (max-width: 550px) {
+  .reciterSurahDetails {
+    audio {
+      width: 100%;
+    }
+  }
+}
 @media (max-width: 450px) {
   header {
 
