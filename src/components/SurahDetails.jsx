@@ -15,8 +15,6 @@ export default function SurahDetails() {
         surahDetailsData();
     }, [])
 
-    console.log(surah);
-
     return (
         <div className='surahDetails'>
             {

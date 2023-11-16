@@ -8,10 +8,16 @@ export default function ReciterSurahDetails({ paramsReciter }) {
 
     const params = useParams();
 
-    const [reciterDetails, setReciterDetails] = useState();
+    const [reciterDetails, setReciterDetails] = useState(),
+        [surah, setSurah] = useState();
 
     let loadReciterDetails = () => {
         fetch(`https://mp3quran.net/api/v3/reciters?language=ar&reciter=${paramsReciter}`).then(res => res.json()).then(data => setReciterDetails(data.reciters));
+    }
+
+
+    let surahDetailsData = () => {
+        fetch(`https://api.quran.gading.dev/surah/${params.surahDetailId}`).then(res => res.json()).then(data => setSurah(data.data));
     }
 
     let backBtn = () => {
@@ -19,8 +25,11 @@ export default function ReciterSurahDetails({ paramsReciter }) {
     }
 
     useEffect(() => {
+        surahDetailsData();
         loadReciterDetails();
     }, [])
+
+    console.log(surah);
 
     return (
         <div className='reciterSurahDetails'>
@@ -31,9 +40,25 @@ export default function ReciterSurahDetails({ paramsReciter }) {
                 reciterDetails !== undefined
                     ?
                     <>
+                        <h2 className='surah_name'>{surah.name.long}</h2>
                         <audio controls>
                             <source src={`${reciterDetails[0].moshaf[0].server}/00${params.surahDetailId}.mp3`} type="audio/mpeg" />
                         </audio>
+                        <div className="surahDetails">
+                            <>
+                                <h4>بسم اللّه الرحمن الرحيم</h4>
+                                <div className="verses">
+                                    {
+                                        surah.verses.map((verse) =>
+                                            <div key={verse.number.inQuran}>
+                                                <span>{verse.text.arab}</span>
+                                                <span className='separator'>({verse.number.inSurah})</span>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                            </>
+                        </div>
                     </>
                     :
                     <p>LOADING...</p>
