@@ -225,6 +225,7 @@ header {
   .verses {
     width: 70%;
     margin: 0 auto;
+
     span {
       font-size: 1.6rem;
       line-height: 2;
@@ -296,6 +297,7 @@ header {
   .back_btn {
 
     margin-bottom: 50px;
+
     a {
       font-size: 2rem;
       cursor: pointer;
@@ -314,7 +316,92 @@ header {
   }
 }
 
+.azkar {
+  padding: 50px 0;
+  border-bottom: 2px solid $dim-color;
+
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
+    gap: 30px;
+
+    .category {
+      button {
+        background-color: $special-color;
+        border: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 1.5rem;
+        padding: 10px 0;
+        border-radius: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.azkar_details {
+  color: white;
+  padding: 50px 0;
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
+    text-align: center;
+    gap: 20px;
+
+    .card {
+      border: 1px solid white;
+      border-radius: 6px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+      -o-border-radius: 6px;
+
+      .heading {
+        background-color: white;
+        color: $special-color;
+        padding: 10px 0;
+
+        h2 {
+          font-size: 2rem;
+        }
+      }
+
+      .content {
+        padding: 20px;
+        background-color: $secondary-color;
+        p {
+          font-size: 1.4rem;
+          font-weight: 700;
+          line-height: 1.6;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
 // ///////////////////////////////////////Media Queries/ //////////////////////////////////////////////
+
+@media (max-width: 1039px) {
+  .azkar {
+    .categories {
+      text-align: center;
+
+      .category {
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
 
 @media (max-width: 550px) {
   .reciterSurahDetails {
@@ -323,6 +410,7 @@ header {
     }
   }
 }
+
 @media (max-width: 450px) {
   header {
 
