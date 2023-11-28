@@ -4,6 +4,8 @@ import { useState } from 'react'
 import SurahsData from './components/SurahsData';
 import RecitersData from './components/RecitersData';
 import AzkarData from './components/AzkarData';
+import { useDispatch } from 'react-redux';
+import { addToCart } from './reduxtk/features/azkar/azkarSlice';
 
 export default function MainView() {
 
@@ -41,12 +43,19 @@ export default function MainView() {
         setIsActive("azkar");
     }
 
+    const dispatch = useDispatch();
 
 
     useEffect(() => {
         loadSurahs();
         loadAzkar();
     }, [])
+
+    const timeOut = setTimeout(() => {
+        dispatch(addToCart(azkar))
+    },3000)
+
+    // clearTimeout(timeOut);
 
     return (
         <div className='main_view'>

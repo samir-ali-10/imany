@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AzkarDetails from './AzkarDetails';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../reduxtk/features/azkar/azkarSlice';
 
 export default function AzkarData({ azkar }) {
 
@@ -16,10 +18,6 @@ export default function AzkarData({ azkar }) {
     let handleTasabih = () => {
         setCount(3);
     }
-
-    let azkarSabah = Object.values(azkar)[3];
-
-    // console.log(azkarSabah);
 
     return (
         <>
