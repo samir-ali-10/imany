@@ -1,46 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../reduxtk/features/azkar/azkarSlice';
+import { fetchAzkar } from '../reduxtk/features/fetchAzkar/fetchAzkarSlice';
 
 export default function AzkarDetails({ azkar, count }) {
 
-    const [azkarCount, setAzkarCount] = useState(),
-        [azkary, setAzkary] = useState();
+
+    const [azkary, setAzkary] = useState();
 
 
-    const azkarSt = useSelector((state) => state.azkar);
+    const azkarSt = useSelector((state) => state.fetchAzkar);
     const dispatch = useDispatch();
 
 
     useEffect(() => {
-        handleAzkar()
+        dispatch(fetchAzkar())
+        setAzkary(Object.values(azkarSt.azkarItems)[count])
     }, [count])
-
-    let handleAzkar = () => {
-        setAzkary(Object.values(azkarSt.azkarItem[4])[count]);
-    }
-
-    console.log(azkary);
-
-    // console.log(Object.values(azkarSt.azkarItem[0])[count]);
-    // let handleCount = (azkaro) => {
-    //     let countInNumber;
-    //     if(azkaro.count[0] === "0") {
-    //         countInNumber = Number(azkaro.count.replace("0", ""))
-    //         setAzkarCount(countInNumber)
-    //     }
-    //     else {
-    //         setAzkarCount(Number(azkaro.count));
-    //     }
-    // }
-
-    // let decreaseCount = () => {
-    //     setAzkarCount(azkarCount-1);
-    // }
-
-    console.log(azkarCount);
-
-    // console.log(azkary);
 
     return (
         <div className='azkar_details'>

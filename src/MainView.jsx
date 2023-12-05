@@ -6,6 +6,7 @@ import RecitersData from './components/RecitersData';
 import AzkarData from './components/AzkarData';
 import { useDispatch } from 'react-redux';
 import { addToCart } from './reduxtk/features/azkar/azkarSlice';
+import { fetchAzkar } from './reduxtk/features/fetchAzkar/fetchAzkarSlice';
 
 export default function MainView() {
 
@@ -50,12 +51,6 @@ export default function MainView() {
         loadSurahs();
         loadAzkar();
     }, [])
-
-    const timeOut = setTimeout(() => {
-        dispatch(addToCart(azkar))
-    },3000)
-
-    // clearTimeout(timeOut);
 
     return (
         <div className='main_view'>
