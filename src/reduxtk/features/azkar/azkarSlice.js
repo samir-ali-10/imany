@@ -21,10 +21,16 @@ const azkarSlice = createSlice({
             //     state.azkarItem.push(tempProduct);
             // }
             localStorage.setItem("azkarItems", JSON.stringify(state.azkarItem));
+        },
+        increaseAzkarCount: (state) => {
+            state.azkarItemCount++;
+        },
+        descreaseAzkarCount: (state, action) => {
+            state.azkarItemCount -= action.payload;
         }
     }
 })
 
 
 export default azkarSlice.reducer
-export const { addToCart } = azkarSlice.actions
+export const { addToCart, increaseAzkarCount, descreaseAzkarCount } = azkarSlice.actions

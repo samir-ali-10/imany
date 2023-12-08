@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { NavLink } from 'react-router-dom';
 
-export default function ReciterSurahDetails({ paramsReciter }) {
+export default function ReciterSurahDetails({ paramsReciterId }) {
 
     const params = useParams();
 
@@ -12,7 +12,7 @@ export default function ReciterSurahDetails({ paramsReciter }) {
         [surah, setSurah] = useState();
 
     let loadReciterDetails = () => {
-        fetch(`https://mp3quran.net/api/v3/reciters?language=ar&reciter=${paramsReciter}`).then(res => res.json()).then(data => setReciterDetails(data.reciters));
+        fetch(`https://mp3quran.net/api/v3/reciters?language=ar&reciter=${params.reciterId}`).then(res => res.json()).then(data => setReciterDetails(data.reciters));
     }
 
 
@@ -29,6 +29,8 @@ export default function ReciterSurahDetails({ paramsReciter }) {
         loadReciterDetails();
     }, [])
 
+    console.log(surah);
+
     return (
         <div className='reciterSurahDetails'>
             <div className="back_btn">
@@ -38,7 +40,13 @@ export default function ReciterSurahDetails({ paramsReciter }) {
                 reciterDetails !== undefined
                     ?
                     <>
-                        <h2 className='surah_name'>{surah.name.long}</h2>
+                        {
+                            surah !== undefined
+                                ?
+                                <h2 className='surah_name'>{surah.name.long}</h2>
+                                :
+                                ""
+                        }
                         <audio controls>
                             <source src={`${reciterDetails[0].moshaf[0].server}/00${params.surahDetailId}.mp3`} type="audio/mpeg" />
                         </audio>
@@ -47,12 +55,16 @@ export default function ReciterSurahDetails({ paramsReciter }) {
                                 <h4>بسم اللّه الرحمن الرحيم</h4>
                                 <div className="verses">
                                     {
-                                        surah.verses.map((verse) =>
-                                            <div key={verse.number.inQuran}>
-                                                <span>{verse.text.arab}</span>
-                                                <span className='separator'>({verse.number.inSurah})</span>
-                                            </div>
-                                        )
+                                        surah !== undefined
+                                            ?
+                                            surah.verses.map((verse) =>
+                                                <div key={verse.number.inQuran}>
+                                                    <span>{verse.text.arab}</span>
+                                                    <span className='separator'>({verse.number.inSurah})</span>
+                                                </div>
+                                            )
+                                            :
+                                            ""
                                     }
                                 </div>
                             </>

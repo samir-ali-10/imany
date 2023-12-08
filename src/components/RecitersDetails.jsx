@@ -6,6 +6,8 @@ export default function RecitersDetails() {
 
     const params = useParams();
 
+    let [paramsReciterId, setParamsReciterId] = useState();
+
     const [reciterDetails, setReciterDetails] = useState(),
         [surahs, setSurahs] = useState([]),
         [isActive, setActive] = useState(true);
@@ -27,7 +29,10 @@ export default function RecitersDetails() {
     useEffect(() => {
         loadSurahs();
         loadReciterDetails();
+        setParamsReciterId(params.reciterId)
     }, [])
+
+    console.log(paramsReciterId);
 
     return (
         <div className="reciterDetails">
@@ -44,7 +49,7 @@ export default function RecitersDetails() {
                                         <div className="card_container">
                                             {
                                                 surahs.map(surah =>
-                                                    <NavLink to={`/reciterDetails/surah/${surah.number}`}
+                                                    <NavLink to={`/surah/${paramsReciterId}/${surah.number}`}
                                                         key={surah.number} onClick={handleSurahsActive} className="card">
                                                         <div className="left">
                                                             <div className="outer">
@@ -65,7 +70,7 @@ export default function RecitersDetails() {
                                     :
 
                                     <div className='reciter_surah_details'>
-                                        <ReciterSurahDetails paramsReciter={params.reciterId} />
+                                        <ReciterSurahDetails paramsReciterId={paramsReciterId} />
                                     </div>
                             }
                         </>

@@ -16,7 +16,7 @@ function App() {
         <Route path='/' element={<MainView />} />
         <Route path='/:surahId' element={<SurahDetails />} />
         <Route path='/reciterDetails/:reciterId' element={<RecitersDetails />} />
-        <Route path='/reciterDetails/surah/:surahDetailId' element={<ReciterSurahDetails />} />
+        <Route path='/surah/:reciterId/:surahDetailId' element={<ReciterSurahDetails />} />
       </Routes>
     </div>
   );
